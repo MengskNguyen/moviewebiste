@@ -1,29 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import styles from './app.module.scss';
 import Header from './components/Header';
-import Home from './components/Home';
-import MovieDetail from './components/MovieDetail';
-import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
+import Home from '~/components/Home';
+import MovieDetail from '~/components/MovieDetail';
+import PageNotFound from '~/components/PageNotFound';
 
 const cx = classNames.bind(styles);
 
 function App() {
     return (
-        <Router>
-            <div className={cx('app')}>
+        <div className={cx('app')}>
+            <Router>
                 <Header></Header>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/movie/:imdbID" element={<MovieDetail />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Routes>
+                <div className={cx('container')}>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/movie/:imdbID" element={<MovieDetail />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                </div>
                 <Footer />
-            </div>
-        </Router>
+            </Router>
+        </div>
     );
 }
 
