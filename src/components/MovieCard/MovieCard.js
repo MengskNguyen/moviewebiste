@@ -15,7 +15,7 @@ const MovieCard = ({ data }) => {
                     </div>
                     <div className={cx('bottom')}>
                         <div className={cx('info')}>
-                            <h4>{data.Title}</h4>
+                            <h2>{data.Title}</h2>
                             <p>{data.Year}</p>
                         </div>
                     </div>

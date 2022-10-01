@@ -3,16 +3,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import movieApi from '~/common/apis/movieApi';
 import { APIkey } from '~/common/apis/MovieApiKey';
 
-export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async () => {
-    const movieText = 'Harry';
-    const response = await movieApi.get(`?apiKey=${APIkey}&s=${movieText}&type=movie`);
+export const fetchAsyncMovies = createAsyncThunk('movies/fetchAsyncMovies', async (term = 'harry') => {
+    const response = await movieApi.get(`?apiKey=${APIkey}&s=${term}&type=movie`);
     // console.log(response.data);
     return response.data;
 });
 
-export const fetchAsyncShows = createAsyncThunk('show/fetchAsyncShows', async () => {
-    const showText = 'Friends';
-    const response = await movieApi.get(`?apiKey=${APIkey}&s=${showText}&type=series`);
+export const fetchAsyncShows = createAsyncThunk('show/fetchAsyncShows', async (term = 'friend') => {
+    const response = await movieApi.get(`?apiKey=${APIkey}&s=${term}&type=series`);
     // console.log(response.data);
     return response.data;
 });
@@ -33,8 +31,8 @@ export const movieSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-        addMovies: (state, action) => {
-            state.movies = action.payload;
+        removeSelectedMovieOrShow: (state) => {
+            state.selectedMovieOrShow = {};
         },
     },
     extraReducers: {
@@ -59,7 +57,7 @@ export const movieSlice = createSlice({
     },
 });
 
-export const { addMovies } = movieSlice.actions;
+export const { removeSelectedMovieOrShow } = movieSlice.actions;
 export const getAllMovie = (state) => state.movies.movies;
 export const getAllShow = (state) => state.movies.shows;
 export const getSelectedMovieOrShowDetail = (state) => state.movies.selectedMovieOrShow;

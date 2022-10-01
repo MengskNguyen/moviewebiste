@@ -4,6 +4,8 @@
     cursor: pointer;
     transition: all 0.3s;
     overflow: hidden;
+    height: 470px;
+    margin: 10px;
 
     &:hover {
         transform: scale(1.1);
@@ -50,11 +52,16 @@
 
 .info {
     color: var(--primary-font);
-    font-weight: 400;
+    font-weight: 400 !important;
     font-size: 16px;
+    text-decoration: none;
 
-    h4 {
+    h2 {
         margin-bottom: 10px;
+        text-overflow: ellipsis;
+
+        overflow: hidden;
+        height: 70px;
     }
 
     p {

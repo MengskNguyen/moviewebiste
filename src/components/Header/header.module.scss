@@ -17,3 +17,29 @@
     height: 38px;
     border-radius: 50%;
 }
+
+.search {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        input {
+            outline: none;
+            width: 100%;
+            padding: 5px 5px 5px 10px;
+            height: 38px;
+        }
+
+        button {
+            padding: 0 8px;
+            font-size: 20px;
+            cursor: pointer;
+            height: 38px;
+        }
+    }
+}
